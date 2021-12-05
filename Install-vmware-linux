@@ -1,0 +1,57 @@
+ 
+Download the linux version
+https://www.vmware.com/es/products/workstation-player.html
+
+https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1621&productId=1039&rPId=77292
+
+
+in the dowload folder runt it 
+sudo ./VMware-Player-7.0.0-2305329.x86_64.bundle
+
+
+After the instalation we go to Applications / System / Vmware Player
+
+At this point we can see that some modules are missing then the background steps from this page will be needed
+https://tr.opensuse.org/Setting_up_VMware_on_SUSE_Linux
+
+Then open Yast in the grafic wizard options from Applications
+open
+Software Management 
+and mark "gcc" to add
+many different depencencies will be shown including the following
+gcc
+gcc-c++
+kernel-source
+kernel-syms
+make (this is probably already installed
+
+------- (another option is by line command>> zypper in kernel-devel kernel-default-devel make gcc)
+
+After all the following installation Report will be shown  by YaST2
+
+Instalation Report
+
+Installation Successfully Finished
+Packages
+Installed Packages: 101
+gcc, gcc-32bit, gcc7, gcc7-32bit, gcc7-c++, gcc-c++, glibc-32bit..... and more
+
+After that Vmware show the following message
+
+---Kernel heather for version ... default were not found 
+The run the following command in terminal
+>>sudo yast2 -i kernel-source
+
+
+After the the last command finish 
+
+Change to 
+>>/usr/src/linux directory, and run the following command:
+
+>>sudo make cloneconfig
+
+Run the following command:
+
+>>sudo make modules_prepare
+
+----Congratulations!! at this point Vmware Workstation 16 Play is ready to work in Linux suse 15.02
